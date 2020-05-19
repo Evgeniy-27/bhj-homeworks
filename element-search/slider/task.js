@@ -3,11 +3,9 @@ const arrowPrev = document.querySelector('.slider__arrow_prev');
 const arrowNext = document.querySelector('.slider__arrow_next');
 let sliderNumber = 0;
 
-function deleteSlide() {
+function switchSlide(i) {
     sliderItem[sliderNumber].classList.remove("slider__item_active");
-};
-
-function switchSlide() {
+    sliderNumber = i;
     if (sliderNumber === sliderItem.length) {
         sliderNumber = 0;
     } else if (sliderNumber < 0) {
@@ -17,13 +15,9 @@ function switchSlide() {
 }
 
 arrowNext.onclick = function () {
-    deleteSlide()
-    sliderNumber++;
-    switchSlide();
+    switchSlide(sliderNumber + 1);
 };
 
 arrowPrev.onclick = function () {
-    deleteSlide()
-    sliderNumber--;
-    switchSlide();
+    switchSlide(sliderNumber - 1);
 };
