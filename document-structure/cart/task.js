@@ -8,15 +8,12 @@ for (let i = 0; i < product.length; i++) {
     let quantity = quantityInc[i].closest('.product__quantity-controls').querySelector('.product__quantity-value');
 
     quantityInc[i].addEventListener('click', function () {
-        if (quantity.textContent >= 1) {
-            ++quantity.textContent;
-        }
+        ++quantity.textContent;
+
     });
     quantityDec[i].addEventListener('click', function () {
         if (quantity.textContent > 1) {
             --quantity.textContent;
-        } else {
-            quantity.textContent = 1;
         }
     })
 
@@ -42,8 +39,14 @@ for (let i = 0; i < product.length; i++) {
             productBasket = true;
         }
         for (let j = 0; j < arrBasket.length; j++) {
+            
+            
+
             if (arrBasket[j].getAttribute('data-id') == product[i].getAttribute('data-id')) {
-                arrBasket[j].querySelector('.cart__product-count').textContent = product[i].querySelector('.product__quantity-value').textContent;
+                
+                arrBasket[j].querySelector('.cart__product-count').innerText =
+                parseInt(arrBasket[j].querySelector('.cart__product-count').innerText) +
+                parseInt(product[i].querySelector('.product__quantity-value').innerText);
                 productBasket = true;
             }
         }

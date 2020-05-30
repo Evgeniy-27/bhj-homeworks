@@ -6,7 +6,7 @@ for (let item of items) {
 
         const title = event.target.getAttribute('title');
         let tooltip = document.querySelector('.tooltip_active');
-        const helper = `<div class="tooltip">${item.title}</div>`;
+        const helper = `<div class="tooltip" style="left: ${item.getBoundingClientRect().left}px; top: ${item.getBoundingClientRect().top + 18}px">${item.title}</div>`;
 
         if (tooltip) {
             if (tooltip.textContent != title) {
